@@ -3,3 +3,5 @@
   action: service name=consul state=restarted
 - name: restart dnsmasq
   service: name=dnsmasq state=restarted enabled=yes
+- name: systemctl reload
+  command: systemctl daemon-reload

@@ -1,0 +1,15 @@
+[Unit]
+Description=Consul Agent
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+ExecStart={{ consul_home }}/bin/consul agent -config-dir {{ consul_config_dir }} -config-file={{ consul_config_file }}
+User={{ consul_user }}
+Group={{ consul_group }}
+TimeoutSec=10
+Restart=always
+Environment="GOMAXPROCS=2"
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

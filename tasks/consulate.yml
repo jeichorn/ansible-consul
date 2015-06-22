@@ -1,16 +1,11 @@
 ---
-- name: update apt
-  apt: >
-    update_cache=yes
-    cache_valid_time=3600
-
 - name: install deps
-  apt: >
+  yum: >
     pkg={{item}}
     state=installed
   with_items:
     - python-pip
-    - python-dev
+    - python-devel
 
 - name: install python module consulate
   pip: >
